@@ -80,7 +80,6 @@ function SearchForm() {
         checkDigit = (10 - (checkDigit % 10)) % 10;
   
         if (checkDigit !== parseInt(isbn13.charAt(12))) {
-          alert('Invalid ISBN');
           return false;
         } else {
           return true;
@@ -110,6 +109,7 @@ function SearchForm() {
         }
         return true;
       } else {
+        alert('Invalid ISBN');
         return false;
       }
     };
@@ -119,8 +119,6 @@ function SearchForm() {
     } else if (validateISBN10(inputIsbn)) {
       const isbn13 = convertISBN(inputIsbn);
       navigate(`/books/${isbn13}?search=${Date.now()}`, { replace: true });
-    } else {
-      alert('Invalid ISBN');
     }
   };
 
